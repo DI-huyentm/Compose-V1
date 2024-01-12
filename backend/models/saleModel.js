@@ -8,31 +8,40 @@ module.exports = (sequelize, DataTypes, Model) => {
         autoIncrement: true,
         primaryKey: true,
       },
-      user_id: {
+      userId: {
         type: DataTypes.INTEGER,
-        allowNull: false,
+        // allowNull: false,
       },
-      shipping_method: {
-        type: DataTypes.ENUM,
-        values: ["shipping", "in_store"],
-        allowNull: false,
+      name: {
+        type: DataTypes.STRING,
+        
       },
-      sum_total: {
+      phoneNumber: {
+        type: DataTypes.INTEGER,
+      },
+      total: {
         type: DataTypes.FLOAT,
-        allowNull: false,
+        // allowNull: false,
+        defaultValue: 0,
       },
       status: {
         type: DataTypes.BOOLEAN,
         defaultValue: false,
-        allowNull: false,
+        // allowNull: false,
       },
       date: {
         type: DataTypes.DATE,
-        allowNull: false,
+        // allowNull: false,
       },
     },
     {
       // Other model options go here
+      hooks: {
+        beforeCreate: (sale, options) => {
+          sale.date = new Date(); // Set the date to the current time
+        },
+      },
+  
       sequelize, // We need to pass the connection instance
       modelName: "Sale", // We need to choose the model name
       timestamps: false,

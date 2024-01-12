@@ -14,14 +14,9 @@ const signToken = (id) => {
 exports.signup = async (req, res) => {
   
   try {
-    console.log(req.body)
-    const { email, name, password, confirmPassword } = req.body;
-    if (password !== confirmPassword) {
-      return res.status(400).json({
-        status: "fail",
-        message: "The confirm password is not match",
-      });
-    }
+    //console.log(req.body)
+    const { email, name, password } = req.body;
+    
 
     const hashedPassword = await bcrypt.hash(password, 12);
     // const hashedPassword = password;
@@ -77,7 +72,7 @@ exports.login = async (req, res) => {
     delete user.dataValues.password;
 
     const token = signToken(user.id);
-    // await user.update({ lastLogin: Date.now() });
+    
     return res.status(200).json({
       status: "success",
       token,

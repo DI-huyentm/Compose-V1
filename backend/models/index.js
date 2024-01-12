@@ -31,7 +31,7 @@ db.Sale = require("./saleModel")(sequelize, DataTypes, Model);
 db.SaleDetail = require("./saledetailModel")(sequelize, DataTypes, Model);
 db.Genre = require("./genreModel")(sequelize, DataTypes, Model);
 db.BookGenre = require("./bookgenreModel")(sequelize, DataTypes, Model);
-// db.Shipping = require("./shippingModel")(sequelize, DataTypes, Model);
+
 
 // // Define the relations between many models
 
