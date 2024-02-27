@@ -10,23 +10,23 @@ const {
     Op,
 } = require("../models/index");
 
-exports.getAllSales = async (req, res) => {
-    try {
-        const sales = await Sale.findAll();
-        return res.status(200).json({
-          status: "success",
-          results: sales.length,
-          data: {
-            sales,
-          },
-        });
-    } catch (error) {
-      return res.status(400).json({
-        status: "fail",
-        message: "Get all sales fail...",
-      });
-    }
-  };
+// exports.getAllSales = async (req, res) => {
+//     try {
+//         const sales = await Sale.findAll();
+//         return res.status(200).json({
+//           status: "success",
+//           results: sales.length,
+//           data: {
+//             sales,
+//           },
+//         });
+//     } catch (error) {
+//       return res.status(400).json({
+//         status: "fail",
+//         message: "Get all sales fail...",
+//       });
+//     }
+//   };
 
   exports.createSale = async (req, res) => {
   
@@ -55,10 +55,8 @@ exports.getAllSales = async (req, res) => {
         userId: currentUser.id,
         name,
         address,
-        phoneNumber,
-        
-      });
-  
+        phoneNumber,        
+      });  
       
         
       return res.status(200).json({
@@ -75,34 +73,34 @@ exports.getAllSales = async (req, res) => {
     }
   };
 
-  exports.createSaleDetail = async (req, res) => {
-    try {      
-      const { cartItems, total } = req.body;
-      let saleDetails = [];
+  // exports.createSaleDetail = async (req, res) => {
+  //   try {      
+  //     const { cartItems, total } = req.body;
+  //     let saleDetails = [];
 
-      for (const cartItem of cartItems) {
-        const newSaleDetail = await SaleDetail.create({ 
-          sale_id: sale_id,
-          book_id: cartItem.id,
-          quantity: cartItem.quantity,
-          total,
-         });
-        saleDetails.push(newSaleDetail);
-      }
+  //     for (const cartItem of cartItems) {
+  //       const newSaleDetail = await SaleDetail.create({ 
+  //         sale_id: sale_id,
+  //         book_id: cartItem.id,
+  //         quantity: cartItem.quantity,
+  //         total,
+  //        });
+  //       saleDetails.push(newSaleDetail);
+  //     }
   
-      return res.status(200).json({
-        status: "success",
-        data: {
-          saleDetailList: saleDetails,
-        },
-      });
-  } catch (error) {
-    return res.status(400).json({
-      status: "fail",
-      message: "Create sale detail fail...",
-    });
-  }
-  };
+  //     return res.status(200).json({
+  //       status: "success",
+  //       data: {
+  //         saleDetailList: saleDetails,
+  //       },
+  //     });
+  // } catch (error) {
+  //   return res.status(400).json({
+  //     status: "fail",
+  //     message: "Create sale detail fail...",
+  //   });
+  // }
+  // };
 
 // exports.createSale = async (req, res) => {
 //   try {

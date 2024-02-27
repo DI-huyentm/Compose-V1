@@ -4,12 +4,12 @@ const saleController = require("../controllers/saleController");
 
 const router = express.Router();
 
-router.get(
-    "/",
-    authController.protect,
-    authController.restrictTo("admin"),
-    saleController.getAllSales
-    );
+// router.get(
+//     "/",
+//     authController.protect,
+//     authController.restrictTo("admin"),
+//     saleController.getAllSales
+//     );
 
 router.post(
     "/",
@@ -32,12 +32,12 @@ router.post(
 //     saleController.updateSale
 //     );
 
-router.post(
-    "/:id",
-    authController.protect,
-    authController.restrictTo("admin", "user"),
-    saleController.createSaleDetail
-    );
+// router.post(
+//     "/detail",
+//     authController.protect,
+//     authController.restrictTo("admin", "user"),
+//     saleController.createSaleDetail
+//     );
         
 // router.patch(
 //     "/detail/:id",
