@@ -1,5 +1,5 @@
 .Container {
-    background: url(/Users/macbookair/Project1/login/src/Components/Assets/blurBg.jpg);
+    background: url(.\frontend\src\Components\Assets\blurBg.jpg);
     background-size:cover;  
     height: 100vh;
 }
