@@ -18,7 +18,7 @@ import { Delete as DeleteIcon } from "@mui/icons-material";
 import { useDeleteBook } from "./useDeleteBook";
 import BookEdit from "./BookEdit";
 
-function CompanySummaryCard({ book, xs, md }) {
+function BookCard({ book, xs, md }) {
   const { deleteExistingBook, isDeleting } = useDeleteBook(book.id);
 
   const truncateText = (text, maxLength) => {
@@ -111,4 +111,4 @@ function CompanySummaryCard({ book, xs, md }) {
   );
 }
 
-export default CompanySummaryCard;
+export default BookCard;

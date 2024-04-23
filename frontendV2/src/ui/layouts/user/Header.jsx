@@ -21,6 +21,7 @@ import { Link } from "react-router-dom";
 import { useSocket } from "../../../contexts/SocketContext";
 import Notification from "../../../features/notifications/Notification";
 import UserMenuHeader from "../../sharedComponents/UserMenuHeader";
+import MenuBookIcon from '@mui/icons-material/MenuBook';
 
 function ResponsiveAppBar() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
@@ -51,7 +52,7 @@ function ResponsiveAppBar() {
     <AppBar position="sticky">
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-          <TravelExploreIcon
+          <MenuBookIcon
             sx={{ display: { xs: "none", md: "flex", color: "white" }, mr: 1 }}
           />
           <Typography
@@ -69,7 +70,7 @@ function ResponsiveAppBar() {
               textDecoration: "none",
             }}
           >
-            BOOK SHOP
+            BOOKSTORE
           </Typography>
 
           <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
@@ -115,7 +116,7 @@ function ResponsiveAppBar() {
               ))}
             </Menu>
           </Box>
-          <TravelExploreIcon
+          <MenuBookIcon
             sx={{ display: { xs: "flex", md: "none", color: "white" }, mr: 1 }}
           />
           <Typography
@@ -134,7 +135,7 @@ function ResponsiveAppBar() {
               textDecoration: "none",
             }}
           >
-            BOOK SHOP
+            BOOKSTORE
           </Typography>
 
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
