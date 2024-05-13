@@ -29,6 +29,7 @@ import Notification from "./features/notifications/Notification";
 import AgentCompany from "./features/agents/companies/AgentCompany";
 import { UserCVProvider } from "./contexts/UserCVContext";
 import { SocketProvider } from "./contexts/SocketContext";
+import { CartProvider } from "./contexts/CartContext";
 import ExpectJobs from "./features/expectedJobs/ExpectJobs";
 
 const queryClient = new QueryClient();
@@ -59,14 +60,16 @@ function App() {
       <QueryClientProvider client={queryClient}>
         <ReactQueryDevtools initialIsOpen={false} />
         <BrowserRouter>
-          <Routes>
-            <Route element={<AppLayouts />}>
-              <Route path="/" element={<Homepage />} />
-            </Route>
+          <CartProvider>
+            <Routes>
+              <Route element={<AppLayouts />}>
+                <Route path="/" element={<Homepage />} />
+              </Route>
 
-            <Route path="/unauthorize" element={<Unauthorize />} />
-            <Route path="*" element={<NotFoundPage />} />
-          </Routes>
+              <Route path="/unauthorize" element={<Unauthorize />} />
+              <Route path="*" element={<NotFoundPage />} />
+            </Routes>
+          </CartProvider>
         </BrowserRouter>
 
         <Toaster
