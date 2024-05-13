@@ -23,7 +23,7 @@ import { useDeleteBook } from "./useDeleteBook";
 import BookEdit from "./BookEdit";
 import { useCart } from "../../contexts/CartContext";
 
-function CompanySummaryCard({ book, xs, md }) {
+function BookCard({ book, xs, md }) {
   const { deleteExistingBook, isDeleting } = useDeleteBook(book.id);
   const { addItem, cartItems, increaseItemAmount } = useCart();
 
@@ -141,4 +141,4 @@ function CompanySummaryCard({ book, xs, md }) {
   );
 }
 
-export default CompanySummaryCard;
+export default BookCard;

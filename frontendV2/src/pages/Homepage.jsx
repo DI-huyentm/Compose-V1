@@ -5,7 +5,7 @@ import BookCreate from "../features/books/BookCreate";
 
 function Homepage() {
   return (
-    <Box sx={{ width: { md: "70%", xs: "90%" }, margin: "0 auto" }}>
+    <Box sx={{ width: { md: "80%", xs: "90%" }, margin: "0 auto" }}>
       <Chart />
       <BookCreate />
       <BookCardList />
