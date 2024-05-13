@@ -14,7 +14,6 @@ module.exports = (sequelize, DataTypes, Model) => {
       },
       name: {
         type: DataTypes.STRING,
-        
       },
       phoneNumber: {
         type: DataTypes.INTEGER,
@@ -31,7 +30,6 @@ module.exports = (sequelize, DataTypes, Model) => {
       },
       date: {
         type: DataTypes.DATE,
-        // allowNull: false,
       },
     },
     {
@@ -41,7 +39,7 @@ module.exports = (sequelize, DataTypes, Model) => {
           sale.date = new Date(); // Set the date to the current time
         },
       },
-  
+
       sequelize, // We need to pass the connection instance
       modelName: "Sale", // We need to choose the model name
       timestamps: false,

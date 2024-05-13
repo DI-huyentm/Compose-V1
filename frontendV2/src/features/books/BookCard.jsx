@@ -13,13 +13,19 @@ import PersonIcon from "@mui/icons-material/Person";
 import EuroSymbolIcon from "@mui/icons-material/EuroSymbol";
 import ProductionQuantityLimitsIcon from "@mui/icons-material/ProductionQuantityLimits";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
+import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 
-import { Delete as DeleteIcon } from "@mui/icons-material";
+import {
+  Delete as DeleteIcon,
+  ShoppingCart as ShoppingCartIcon,
+} from "@mui/icons-material";
 import { useDeleteBook } from "./useDeleteBook";
 import BookEdit from "./BookEdit";
+import { useCart } from "../../contexts/CartContext";
 
 function BookCard({ book, xs, md }) {
   const { deleteExistingBook, isDeleting } = useDeleteBook(book.id);
+  const { addItem, cartItems, increaseItemAmount } = useCart();
 
   const truncateText = (text, maxLength) => {
     if (text.length <= maxLength) {
@@ -29,8 +35,22 @@ function BookCard({ book, xs, md }) {
   };
 
   const handleDelete = (bookId) => {
-    // Implement delete functionality here
     deleteExistingBook(bookId);
+  };
+
+  const handleAddToCart = (book) => {
+    const existingItem = cartItems?.find((item) => item.id === book.id);
+    if (existingItem) {
+      increaseItemAmount(existingItem.id);
+    } else {
+      addItem({
+        id: book.id,
+        title: book.title,
+        price: book.price,
+        image: book.image,
+        amount: 1,
+      });
+    }
   };
 
   return (
@@ -93,6 +113,16 @@ function BookCard({ book, xs, md }) {
               <DeleteIcon color="primary" />
             </IconButton>
             <BookEdit book={book} />
+            <IconButton
+              size="large"
+              aria-label="cart"
+              aria-controls="menu-appbar"
+              aria-haspopup="true"
+              color="primary"
+              onClick={() => handleAddToCart(book)}
+            >
+              <AddShoppingCartIcon />
+            </IconButton>
             <Button
               endIcon={<ArrowForwardIosIcon />}
               component={Link}

@@ -9,11 +9,14 @@ import {
   MenuItem,
   Container,
   Button,
+  Badge,
 } from "@mui/material";
 
 import {
   Menu as MenuIcon,
   TravelExplore as TravelExploreIcon,
+  ShoppingCart as ShoppingCartIcon,
+  MenuBook as MenuBookIcon,
 } from "@mui/icons-material";
 
 import { Link } from "react-router-dom";
@@ -21,13 +24,22 @@ import { Link } from "react-router-dom";
 import { useSocket } from "../../../contexts/SocketContext";
 import Notification from "../../../features/notifications/Notification";
 import UserMenuHeader from "../../sharedComponents/UserMenuHeader";
-import MenuBookIcon from '@mui/icons-material/MenuBook';
+import { useCart } from "../../../contexts/CartContext";
+import CartList from "../../../features/cart/Cart";
 
 function ResponsiveAppBar() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   // const { currentUser, isAuthenticated, handleLogout } = useAuth();
   const [isNotificationOpen, setNotificationOpen] = React.useState(false);
   // const { notifications, handleReadAllNotifications } = useSocket();
+  const [isCartOpen, setIsCartOpen] = React.useState(false);
+
+  const { cartItems } = useCart();
+
+  const numberOfItems = cartItems.reduce(
+    (accumulator, item) => accumulator + item.amount,
+    0
+  );
 
   const pages = [
     // { title: "Tạo CV", link: "/users/cv/create" },
@@ -46,6 +58,10 @@ function ResponsiveAppBar() {
 
   const toggleNotificationMenu = () => {
     setNotificationOpen(!isNotificationOpen);
+  };
+
+  const toggleCartMenu = () => {
+    setIsCartOpen(!isCartOpen);
   };
 
   return (
@@ -161,6 +177,19 @@ function ResponsiveAppBar() {
             />
           )} */}
 
+          <IconButton
+            size="large"
+            aria-label="cart"
+            aria-controls="menu-appbar"
+            aria-haspopup="true"
+            onClick={toggleCartMenu}
+            color="white"
+          >
+            <Badge badgeContent={numberOfItems} color="error">
+              <ShoppingCartIcon sx={{ color: "white" }} />
+            </Badge>
+          </IconButton>
+
           {/* {!isAuthenticated && (
             <Box sx={{ flexGrow: 0 }}>
               <Button
@@ -193,6 +222,10 @@ function ResponsiveAppBar() {
             />
           </Box>
         )} */}
+
+        <Box>
+          <CartList isOpen={isCartOpen} onClose={toggleCartMenu} items={[]} />
+        </Box>
       </Container>
     </AppBar>
   );
