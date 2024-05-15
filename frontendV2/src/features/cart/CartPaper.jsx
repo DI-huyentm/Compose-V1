@@ -1,28 +1,24 @@
-import {
-  IconButton,
-  Divider,
-  Grid,
-  Icon,
-  Box,
-  Typography,
-  Menu,
-  MenuItem,
-  Avatar,
-} from "@mui/material";
-import TitleText from "../../ui/sharedComponents/TitleText";
+import { Box, Divider, Grid, IconButton, Typography } from "@mui/material";
+import { Icon } from "@mui/material";
+import { MenuItem } from "@mui/material";
+import { Avatar } from "@mui/material";
 import { useCart } from "../../contexts/CartContext";
 import AddIcon from "@mui/icons-material/Add";
 import RemoveIcon from "@mui/icons-material/Remove";
 import { useNavigate } from "react-router-dom";
+
+import CustomCard from "../../ui/sharedComponents/CustomCard";
+import TitleText from "../../ui/sharedComponents/TitleText";
 
 const menuItemStyles = {
   whiteSpace: "normal",
   wordWrap: "break-word",
 };
 
-export default function CartList({ isOpen, onClose }) {
+function CartPaper() {
   const { cartItems, increaseItemAmount, decreaseItemAmount, clearCart } =
     useCart();
+
   const navigate = useNavigate();
 
   const totalValue = cartItems.reduce(
@@ -31,37 +27,10 @@ export default function CartList({ isOpen, onClose }) {
   );
 
   return (
-    <Menu
-      anchorOrigin={{
-        vertical: "top",
-        horizontal: "right",
-      }}
-      transformOrigin={{
-        vertical: "top",
-        horizontal: "right",
-      }}
-      anchorEl={null}
-      open={isOpen}
-      onClose={onClose}
-      PaperProps={{
-        style: {
-          maxHeight: "50vh",
-          width: "500px",
-          marginTop: "45px",
-          borderRadius: "10px",
-          overflow: "hidden",
-          overflowY: "auto",
-        },
-      }}
-    >
-      <Grid container justifyContent="space-between">
-        <Grid item xs={10} ml={5}>
-          <TitleText variant="h5">🛒 Danh sách giỏ hàng</TitleText>
-        </Grid>
-        <Grid item xs={1}>
-          <IconButton onClick={clearCart} sx={{ color: "#051650" }}>
-            <Icon>delete</Icon>
-          </IconButton>
+    <CustomCard>
+      <Grid container justifyContent="center">
+        <Grid item xs={10} my={2}>
+          <TitleText variant="h5">🛒 Xác nhận giỏ hàng</TitleText>
         </Grid>
       </Grid>
 
@@ -132,16 +101,15 @@ export default function CartList({ isOpen, onClose }) {
             </Grid>
 
             <Grid item>
-              <IconButton
-                sx={{ color: "#051650" }}
-                onClick={() => navigate("/payment")}
-              >
-                <Icon>payment</Icon>
+              <IconButton sx={{ color: "#051650" }}>
+                <Icon>check</Icon>
               </IconButton>
             </Grid>
           </Grid>
         </MenuItem>
       )}
-    </Menu>
+    </CustomCard>
   );
 }
+
+export default CartPaper;

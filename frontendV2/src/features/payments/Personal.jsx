@@ -1,4 +1,6 @@
-import { useForm } from "react-hook-form";
+function Personal() {
+    return ( 
+        import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 import { Box, Grid } from "@mui/material";
 import {
@@ -11,21 +13,29 @@ import {
 
 import ControlledTextField from "../../../ui/inputs/ControlledTextField";
 import ResumeCard from "../ResumeCard";
+import { useUserCV } from "../../../contexts/UserCVContext";
 import TitleText from "../../../ui/sharedComponents/TitleText";
 import SaveButton from "../../../ui/inputs/SaveButton";
 
 const icons = [PhoneIcon, EmailIcon, HomeIcon];
 
 function Personal() {
+  const { state, dispatch } = useUserCV();
+
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm({
-    defaultValues: {},
+    defaultValues: {
+      name: state.name,
+      address: state.address,
+      contacts: state.contacts,
+    },
   });
 
   const onSubmit = (data) => {
+    dispatch({ type: "ADD_INFO", payload: data });
     toast.success("Đã lưu thông tin cá nhân");
   };
 
@@ -92,6 +102,11 @@ function Personal() {
       </Box>
     </ResumeCard>
   );
+}
+
+export default Personal;
+
+     );
 }
 
 export default Personal;
