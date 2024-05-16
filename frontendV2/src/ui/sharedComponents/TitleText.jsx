@@ -12,6 +12,7 @@ function TitleText({
       fontWeight="bold"
       textAlign={textAlign}
       color={color}
+      mb={2}
     >
       {children}
     </Typography>
