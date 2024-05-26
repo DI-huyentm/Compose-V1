@@ -1,18 +1,18 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { deleteBook } from "../../services/users/bookAPI";
+import { deleteStudent } from "../../services/users/studentAPI";
 import { toast } from "react-hot-toast";
 
-export function useDeleteBook() {
+export function useDeleteStudent() {
   const queryClient = useQueryClient();
 
-  const { mutate: deleteExistingBook, isLoading: isDeleting } = useMutation({
-    mutationFn: deleteBook,
+  const { mutate: deleteExistingStudent, isLoading: isDeleting } = useMutation({
+    mutationFn: deleteStudent,
     onSuccess: () => {
-      toast.success("Xóa sách thành công");
-      queryClient.invalidateQueries({ queryKey: ["books"] });
+      toast.success("Xóa sinh vien thành công");
+      queryClient.invalidateQueries({ queryKey: ["students"] });
     },
-    onError: (err) => toast.error(`Lỗi xóa sách mới: ${err.message}`),
+    onError: (err) => toast.error(`Lỗi xóa sinh vien mới: ${err.message}`),
   });
 
-  return { isDeleting, deleteExistingBook };
+  return { isDeleting, deleteExistingStudent };
 }

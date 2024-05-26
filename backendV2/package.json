@@ -21,8 +21,10 @@
     "mysql2": "^3.3.3",
     "sequelize": "^6.31.1",
     "uuid": "^9.0.0",
-    "validator": "^13.9.0",
+    "validator": "^13.9.0"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0",
     "nodemon": "^1.14.9"
   }
-  
 }

@@ -4,11 +4,12 @@ const cors = require("cors");
 const app = express();
 require("./models/index");
 // const userRouter = require("./routes/userRoutes");
-// const bookRouter = require("./routes/bookRoutes");
+const bookRouter = require("./routes/bookRoutes");
 // const genreRouter = require("./routes/genreRoutes");
 // const saleRouter = require("./routes/saleRoutes");
 
 const studentRouter = require("./routes/studentRoutes");
+
 
 
 
@@ -27,10 +28,8 @@ app.use(express.static(`${__dirname}/public`));
 // app.use("/books", bookRouter);
 // app.use("/genres", genreRouter);
 // app.use("/sales", saleRouter);
+
 app.use("/students", studentRouter);
-
-
-
 
 app.all("*", (req, res, next) => {
   res.status(404).json({
