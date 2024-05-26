@@ -1,7 +1,7 @@
 const { Sequelize, DataTypes, Model, QueryTypes, Op } = require("sequelize");
-const sequelize = new Sequelize("vdt", "root", "tranminhhuyen123@", {
-  host: "mysql",
-  // host: "localhost",
+const sequelize = new Sequelize("vdt", "root", "", {
+  // host: "mysql",
+  host: "localhost",
   dialect: "mysql",
   port: 3306,
 });
