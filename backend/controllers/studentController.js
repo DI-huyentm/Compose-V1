@@ -138,12 +138,6 @@ exports.getStudentsByName = async (req, res) => {
       where: { 
         name: { [Op.like]: `%${name}%` } 
       },
-      include: [
-        {
-          model: School,
-          attributes: ['school_name'], // Chỉ lấy thuộc tính school_name từ bảng School
-        },
-      ],
     });
     
     if (!students || students.length === 0) {
