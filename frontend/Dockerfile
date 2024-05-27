@@ -14,7 +14,7 @@ RUN npm install
 COPY . .
 
 # Expose the port on which the React development server will run
-EXPOSE 5173
+EXPOSE 3000
 
 # Command to run the React development server
-CMD ["npm", "run", "dev"]
+CMD ["npm", "start"]
