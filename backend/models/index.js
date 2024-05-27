@@ -34,8 +34,6 @@ db.Op = Op;
 // db.BookGenre = require("./bookgenreModel")(sequelize, DataTypes, Model);
 db.Student = require("./studentModel")(sequelize, DataTypes, Model);
 
-
-
 // // Define the relations between many models
 
 // db.SaleDetail.belongsTo(db.Sale, {
