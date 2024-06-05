@@ -1,5 +1,5 @@
-repo BE:
-repo FE:
+repo BE:https://github.com/DI-huyentm/VDT_BE
+repo FE:https://github.com/DI-huyentm/VDT_FE
 Hai cách chạy Backend vs Mysql:
 
 1. Chạy local:
